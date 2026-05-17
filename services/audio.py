@@ -35,6 +35,8 @@ def baixar_midia(url: str, pasta_saida="downloads"):
         with yt_dlp.YoutubeDL(opcoes) as ydl:
 
             info = ydl.extract_info(url, download=True)
+            
+            arquivo_final = ydl.prepare_filename(info)
             arquivo_final = os.path.splitext(arquivo_final)[0] + ".mp3"
 
             print("\n========== INFO ==========")
