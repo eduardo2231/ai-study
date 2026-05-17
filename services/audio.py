@@ -25,8 +25,8 @@ def baixar_midia(url: str, pasta_saida="downloads"):
         "fragment_retries": 5,
     
         "http_headers": {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/122"
-        },
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/122 Safari/537.36"
+        }
     
         "extractor_args": {
             "youtube": {
