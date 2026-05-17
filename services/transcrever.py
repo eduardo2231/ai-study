@@ -1,5 +1,5 @@
 import whisper
-from audio import baixar_midia
+from services.audio import baixar_midia
 import os
 
 def audio_para_texto(url: str):
@@ -22,8 +22,3 @@ def audio_para_texto(url: str):
         return resultado["text"], arquivo
     except Exception as e:
         print("Erro no Whisper:", e)
-
-
-if __name__ == "__main__":
-    link = input("Cole o link: ")
-    audio_para_texto(link)

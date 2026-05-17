@@ -1,14 +1,15 @@
 import re
 from groq import Groq
-from transcrever import audio_para_texto
+from services.transcrever import audio_para_texto
+import streamlit as st
 import os
 
 def gerar_perguntas(url=None, text=None, api=st.secrets["GROQ_API_KEY"]) -> str:
-
-    texto, arquivo = audio_para_texto(url)
-
-    if text is None and arquivo is None:
-        text = texto
+    if url:
+        texto, arquivo = audio_para_texto(url)
+    else:
+        texto = text
+        arquivo = None
 
     prompt = f"""
     Based on the text below, generate multiple question-and-answer blocks according with language of text
@@ -55,8 +56,8 @@ def gerar_perguntas(url=None, text=None, api=st.secrets["GROQ_API_KEY"]) -> str:
 
     return response.choices[0].message.content
 
-def organizando_texto(url: str):
-    texto = gerar_perguntas(url)
+def organizando_texto(url=None, text=None):
+    texto = gerar_perguntas(url=url,text=text)
     pattern = r"\[START\]\s*R:\s*(.*?)\s*Q:\s*(.*?)\s*\[END\]"
     matches = re.findall(pattern, texto, re.DOTALL)
 

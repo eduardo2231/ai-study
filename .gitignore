@@ -9,6 +9,7 @@ __pycache__/
 secrets.toml
 *.env
 .idea
+flashcards/
 # Distribution / packaging
 .Python
 build/

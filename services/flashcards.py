@@ -1,8 +1,9 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
 import textwrap
-from perguntas import organizando_texto
 import shutil
+
+from services.perguntas import organizando_texto
 
 LARGURA = 800
 ALTURA = 800
@@ -47,8 +48,11 @@ def criar_card(texto, cor_fundo, caminho):
     imagem.save(caminho)
 
 
-def gerar_flashcards(flashcards):
-
+def gerar_flashcards(url=None, text=None):
+    flashcards = organizando_texto(
+        url=url,
+        text=text
+    )
     resetar_flashcards()
 
     for i, card in enumerate(flashcards):
@@ -71,9 +75,3 @@ def resetar_flashcards(pasta="flashcards"):
         shutil.rmtree(pasta)
 
     os.makedirs(pasta, exist_ok=True)
-
-if __name__ == "__main__":
-
-    gerar_flashcards(organizando_texto(
-        "https://www.youtube.com/watch?v=lDrKIqubzdw"
-    ))
