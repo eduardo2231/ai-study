@@ -30,7 +30,7 @@ def baixar_midia(url: str, pasta_saida="downloads"):
     
         "extractor_args": {
             "youtube": {
-                "player_client": ["android", "web"]
+                "player_client": ["android"]
             }
         },
     
