@@ -33,6 +33,8 @@ def baixar_midia(url: str, pasta_saida="downloads"):
                 "player_client": ["android"]
             }
         },
+
+        "cookiefile": "cookies.txt",
     
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
