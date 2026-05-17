@@ -1,8 +1,15 @@
-import whisper
 from services.audio import baixar_midia
 import os
 
+
 def audio_para_texto(url: str):
+    try:
+        import whisper
+    except ModuleNotFoundError as e:
+        raise ModuleNotFoundError(
+            "The whisper package is required for audio transcription. "
+            "Install openai-whisper in requirements.txt or your environment."
+        ) from e
 
     arquivo = baixar_midia(url)
 
