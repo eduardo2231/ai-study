@@ -17,13 +17,23 @@ def baixar_midia(url: str, pasta_saida="downloads"):
         "outtmpl": f"{pasta_saida}/%(title)s.%(ext)s",
         "restrictfilenames": True,
         "noplaylist": True,
-        "quiet": False,
+    
+        "quiet": True,
         "no_warnings": True,
-        "retries": 3,
-        "fragment_retries": 3,
-
-        "progress_hooks": [hook],
-
+    
+        "retries": 5,
+        "fragment_retries": 5,
+    
+        "http_headers": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/122"
+        },
+    
+        "extractor_args": {
+            "youtube": {
+                "player_client": ["android", "web"]
+            }
+        },
+    
         "postprocessors": [{
             "key": "FFmpegExtractAudio",
             "preferredcodec": "mp3",
