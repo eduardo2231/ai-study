@@ -9,9 +9,9 @@ LARGURA = 800
 ALTURA = 800
 
 try:
-    fonte = ImageFont.truetype("arial.ttf", 40)
+    fonte = ImageFont.truetype("arial.ttf", 70)
 except:
-    fonte = ImageFont.load_default()
+    fonte = ImageFont.load_default(size=70)
 
 
 def criar_card(texto, cor_fundo, caminho):
@@ -20,7 +20,7 @@ def criar_card(texto, cor_fundo, caminho):
 
     draw = ImageDraw.Draw(imagem)
 
-    linhas = textwrap.wrap(texto, width=20)
+    linhas = textwrap.wrap(texto, width=30)
 
     texto_final = "\n".join(linhas)
 
